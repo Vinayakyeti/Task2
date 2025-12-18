@@ -11,9 +11,9 @@ import { errorHandler } from './middleware/error.middleware.js';
 const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/taskmanager';
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taskmanager';
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 

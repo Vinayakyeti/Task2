@@ -33,14 +33,14 @@ export default function Dashboard() {
       socket.auth = { token };
       socket.connect();
 
-      socket.on('taskUpdated', (updatedTask) => {
+      socket.on('taskUpdated', (updatedTask: any) => {
         queryClient.setQueryData(['tasks'], (old: any) => {
           if (!old) return [updatedTask];
           return old.map((t: any) => (t._id === updatedTask._id ? updatedTask : t));
         });
       });
 
-      socket.on('taskAssigned', (data) => {
+      socket.on('taskAssigned', (data: any) => {
         setNotification(`You've been assigned to: ${data.task.title}`);
         setTimeout(() => setNotification(null), 5000);
         queryClient.invalidateQueries({ queryKey: ['tasks'] });
